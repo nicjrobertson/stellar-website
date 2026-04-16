@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanessa Fernandez — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #111111;
+    --mid: #333;
+    --soft: #666;
+    --rule: #d8d2cb;
+    --bg: #faf8f5;
+    --warm: #b8935e;
+    --page: #ffffff;
+  }
+
+  html { font-size: 16px; background: var(--bg); }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 60px 24px 100px;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--page);
+    padding: 72px 80px;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.06);
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 3.4rem;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .contact {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--soft);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  .contact a {
+    color: var(--soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact a:hover { color: var(--warm); border-color: var(--warm); }
+
+  .contact-sep { margin: 0 8px; color: var(--rule); }
+
+  /* RULE */
+  .rule {
+    height: 1px;
+    background: linear-gradient(to right, var(--warm), var(--rule) 60%, transparent);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.15s ease forwards;
+  }
+
+  /* PROFILE */
+  .profile {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.18rem;
+    line-height: 1.75;
+    color: var(--mid);
+    margin-bottom: 56px;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s ease forwards;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .section:nth-child(4)  { animation-delay: 0.35s; }
+  .section:nth-child(5)  { animation-delay: 0.45s; }
+  .section:nth-child(6)  { animation-delay: 0.55s; }
+  .section:nth-child(7)  { animation-delay: 0.65s; }
+
+  .section-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ROLE */
+  .role {
+    margin-bottom: 32px;
+  }
+
+  .role:last-child { margin-bottom: 0; }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 16px;
+  }
+
+  .role-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .role-dates {
+    font-size: 0.73rem;
+    color: var(--soft);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .role-org {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+
+  .role-bullets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .role-bullets li {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--mid);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .role-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rule);
+    font-size: 0.75rem;
+  }
+
+  /* CAREER BREAK */
+  .career-break {
+    font-size: 0.8rem;
+    color: var(--soft);
+    font-style: italic;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .skill-label {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-value {
+    color: var(--mid);
+  }
+
+  /* REFERENCES */
+  .ref-note {
+    font-size: 0.875rem;
+    color: var(--mid);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .ref-list {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+  }
+
+  .ref-list li {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+
+  .ref-name {
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+
+  .ref-detail {
+    color: var(--soft);
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--soft);
+    letter-spacing: 0.04em;
+  }
+
+  .footer a {
+    color: var(--warm);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    font-weight: 500;
+  }
+
+  .footer a:hover { opacity: 0.7; }
+
+  /* ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .page { padding: 48px 32px; }
+    .name { font-size: 2.6rem; }
+    .role-header { flex-direction: column; gap: 2px; }
+    .skill-row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  @media (max-width: 440px) {
+    body { padding: 0; }
+    .page { padding: 40px 24px; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <h1 class="name">Vanessa<br>Fernandez</h1>
+    <div class="contact">
+      Sydney, Australia
+      <span class="contact-sep">·</span>
+      AU +61 481 278 932
+      <span class="contact-sep">·</span>
+      SG +65 9479 1017
+      <br>
+      <a href="mailto:van@soundslikevan.com">van@soundslikevan.com</a>
+      <span class="contact-sep">·</span>
+      <a href="https://linkedin.com/in/vanessavandetta" target="_blank">linkedin.com/in/vanessavandetta</a>
+    </div>
+  </header>
+
+  <div class="rule"></div>
+
+  <p class="profile">Arts &amp; culture programmer, media producer and emerging counsellor with 20+ years across music, broadcasting and cultural development. Experienced in talent development, live event production, content strategy and community engagement — across Singapore's national arts sector, major commercial radio and independent creative practice. A natural mentor and communicator, with a background in brand storytelling and digital content spanning social media, newsletters and editorial. Currently completing a Diploma of Counselling (AIPC) and practising in sound therapy, bringing a trauma-informed and person-centred lens to everything I do.</p>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-label">Experience</div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Content Producer</span>
+        <span class="role-dates">Aug 2024 – Jul 2025</span>
+      </div>
+      <div class="role-org">BOWERBIRD — Interior Design &amp; Property Styling</div>
+      <ul class="role-bullets">
+        <li>Produced content across social media, blog and email channels for an interior design and property styling business.</li>
+        <li>Wrote long-form blog posts and created and distributed regular newsletters.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Social Media Content Producer <em style="font-weight:300;font-size:0.9em;">(Volunteer)</em></span>
+        <span class="role-dates">2024 – 2025</span>
+      </div>
+      <div class="role-org">Mowana Safe Space</div>
+      <ul class="role-bullets">
+        <li>Pro bono content production and wellbeing event series support for a charity organisation focused on safe space and community.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Freelance Content Producer</span>
+        <span class="role-dates">2022 – Present</span>
+      </div>
+      <div class="role-org">Jaden Digital</div>
+      <ul class="role-bullets">
+        <li>Ongoing marketing and content consulting; strategy, copywriting and social media production.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Programmer / Producer / Consultant</span>
+        <span class="role-dates">2018 – Present</span>
+      </div>
+      <div class="role-org">Independent — Singapore &amp; Australia</div>
+      <ul class="role-bullets">
+        <li>Programmed Singapore showcases at BIGSOUND (Brisbane) 2016, 2018 and 2019, connecting local artists with international industry.</li>
+        <li>Produced the Noise Music Mentorship 2018 &amp; 2019 for Singapore's National Arts Council (Youth sector).</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Assistant Programme Director</span>
+        <span class="role-dates">Oct 2013 – Sep 2017</span>
+      </div>
+      <div class="role-org">Lush 99.5FM &amp; 987FM, Mediacorp Singapore</div>
+      <ul class="role-bullets">
+        <li>Led brand, programming and talent development across two flagship stations: Lush 99.5FM (indie/alternative) and 987FM (pop/mainstream).</li>
+        <li>Managed client and community relations; produced large-scale live music events.</li>
+        <li>Mentored on-air talent and content teams, with a focus on authentic storytelling and audience engagement.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Radio Presenter / Producer</span>
+        <span class="role-dates">Aug 2006 – Jul 2013</span>
+      </div>
+      <div class="role-org">Mediacorp &amp; Sonar.SG</div>
+      <ul class="role-bullets">
+        <li>Presented morning drive-time on 987FM, reaching hundreds of thousands of daily listeners.</li>
+        <li>Hosted urban/electronic show on Sonar.SG and Lushloveslocal on Tokyo FM World (Japan).</li>
+        <li>Produced editorial content across digital and broadcast platforms.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Singer / Songwriter / Founder</span>
+        <span class="role-dates">Ongoing</span>
+      </div>
+      <div class="role-org">Ownself Records (Independent)</div>
+      <ul class="role-bullets">
+        <li>Released music on Universal, EMI, Syndicate and Groove Note; performed at festivals across France, Australia, Russia, China and Southeast Asia.</li>
+        <li>Founded independent imprint Ownself Records, managing all creative and business operations.</li>
+        <li>Co-founded Stellar, a sound healing and wellness brand offering sound journeys, retreats and 1:1 sessions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section-label">Education &amp; Training</div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Diploma of Counselling <em style="font-weight:300;font-size:0.9em;">(in progress)</em></span>
+        <span class="role-dates">2023 – Present</span>
+      </div>
+      <div class="role-org">Australian Institute of Professional Counsellors (AIPC)</div>
+      <ul class="role-bullets">
+        <li>Trauma-informed and person-centred approaches; integrating somatic and sound-based modalities.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Sound Therapy &amp; Biofield Tuning Practitioner</span>
+        <span class="role-dates">2020 – Present</span>
+      </div>
+      <div class="role-org">Independent study &amp; practice</div>
+      <ul class="role-bullets">
+        <li>1:1 sessions combining sound healing, vocal activation and nervous system regulation.</li>
+        <li>Developed educational content on breathwork, pranayama and somatic regulation.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Diploma with Merit, Mass Communication</span>
+        <span class="role-dates">Mar 2003 – May 2005</span>
+      </div>
+      <div class="role-org">Ngee Ann Polytechnic, Singapore</div>
+      <ul class="role-bullets">
+        <li>Graduated top 10% of cohort. Won final-year advertising pitch; published in Hype and The Urban Wire.</li>
+      </ul>
+    </div>
+
+    <p class="career-break">Career break 2017–2022 — primary caregiver to a high-needs child.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section-label">Skills &amp; Tools</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">English (fluent), Bahasa Indonesia / Malay (conversational)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Audio &amp; Production</span>
+        <span class="skill-value">Ableton Live, ProTools</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Creative &amp; Digital</span>
+        <span class="skill-value">Adobe Photoshop CC, iMovie, InShot, CapCut, Edits, Microsoft Office Suite, Google Workspace, Keynote</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Platforms &amp; CMS</span>
+        <span class="skill-value">Squarespace, Wix, Campaign Monitor, Meta Business Suite</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="section">
+    <div class="section-label">References</div>
+    <p class="ref-note">Available upon request.</p>
+  </section>
+
+  <footer class="footer">
+    <span>vanessa fernandez · sydney, australia</span>
+    <a href="https://stellarsound.com.au" target="_blank">stellar ↗</a>
+  </footer>
+
+</div>
+</body>
+</html>
